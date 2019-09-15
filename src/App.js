@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'element-theme-default';
+import InputSearch from './InputSearch';
 
-function App() {
-  return (
+
+class App extends React.Component {
+  state = {
+    todoList: [
+      { "value": "vue", "address": "https://github.com/vuejs/vue" },
+      { "value": "element", "address": "https://github.com/ElemeFE/element" },
+      { "value": "cooking", "address": "https://github.com/ElemeFE/cooking" },
+      { "value": "mint-ui", "address": "https://github.com/ElemeFE/mint-ui" },
+      { "value": "vuex", "address": "https://github.com/vuejs/vuex" },
+      { "value": "vue-router", "address": "https://github.com/vuejs/vue-router" },
+      { "value": "angular", "address": "https://github.com/angular" }
+    ],
+  };
+
+  render() {
+    return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Todo list</h1>
+        <InputSearch 
+          todoList={this.state.todoList}
+        />
       </header>
     </div>
-  );
+    )
+  };
 }
 
 export default App;
