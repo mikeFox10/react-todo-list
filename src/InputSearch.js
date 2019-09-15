@@ -8,6 +8,7 @@ class InputSearch extends React.Component {
     super(props);
   
     this.state = {
+      textAdd : ''
     }
   }
   
@@ -26,6 +27,13 @@ class InputSearch extends React.Component {
   handleSelect(item) {
   
   }
+
+  keyPress(e){
+    if(e.keyCode == 13){
+       console.log('value', e.target.value);
+    }
+ }
+
   
   render() {
     return (
@@ -33,10 +41,12 @@ class InputSearch extends React.Component {
         <Layout.Col span="24" className="tac">
           <AutoComplete
             placeholder="What needs to be done?"
-            value={this.state.value2}
+            value={this.state.textAdd}
             fetchSuggestions={this.querySearch.bind(this)}
             onSelect={this.handleSelect.bind(this)}
             triggerOnFocus={false}
+            onChange={(textSelection) => { this.state.textAdd = textSelection }}
+            onKeyPress={ () => this.keyPress}
           ></AutoComplete>
         </Layout.Col>
       </Layout.Row>
